@@ -3,5 +3,5 @@
    SELECT LPAD(' ',5*(LEVEL-1))||name "Name"
    FROM t_dept
    CONNECT BY PRIOR id_dept=id_parent
-   START WITH UPPER(name)=UPPER('company')
+   START WITH id_parent is null
    ORDER SIBLINGS BY name;

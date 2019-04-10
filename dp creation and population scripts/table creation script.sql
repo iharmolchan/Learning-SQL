@@ -175,7 +175,8 @@
     ALTER TABLE t_ctl_node    
         ADD CONSTRAINT node_node_parent_fk 
         FOREIGN KEY (id_parent) 
-        REFERENCES t_ctl_node; 
+        REFERENCES t_ctl_node
+        ON DELETE CASCADE; 
     
     ALTER TABLE t_model    
         ADD CONSTRAINT model_node_fk 
@@ -185,7 +186,8 @@
     ALTER TABLE t_price_model    
         ADD CONSTRAINT model_price_model_fk 
         FOREIGN KEY (id_model) 
-        REFERENCES t_model;
+        REFERENCES t_model
+        ON DELETE CASCADE;
         
     ALTER TABLE t_ware    
         ADD CONSTRAINT model_fk 
@@ -195,12 +197,14 @@
     ALTER TABLE t_price_ware    
         ADD CONSTRAINT price_ware_fk 
         FOREIGN KEY (id_ware) 
-        REFERENCES t_ware;
+        REFERENCES t_ware
+        ON DELETE CASCADE;
         
     ALTER TABLE t_dept    
         ADD CONSTRAINT dept_dept_parent_fk 
         FOREIGN KEY (id_parent) 
-        REFERENCES t_dept;
+        REFERENCES t_dept
+        ON DELETE CASCADE;
         
     ALTER TABLE t_client    
         ADD CONSTRAINT client_dept_fk 

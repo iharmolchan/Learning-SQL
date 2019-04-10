@@ -36,7 +36,7 @@
     VALUES ('Delivery', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('company')));
     ---------------------
     INSERT INTO t_dept (name, id_parent)
-    VALUES ('Grodno region', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('company')));
+    VALUES ('Grodno region', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('sales')));
     ---------------------
     INSERT INTO t_dept (name, id_parent)
     VALUES ('Vitebsk region', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('sales')));
