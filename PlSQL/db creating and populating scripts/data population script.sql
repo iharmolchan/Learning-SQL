@@ -794,6 +794,22 @@
     VALUES ((SELECT id_ware FROM t_ware WHERE UPPER(moniker)=UPPER('reebok l')),
     TO_DATE('2019/02/24', 'yyyy/mm/dd'), TO_DATE('2019/06/17', 'yyyy/mm/dd'), 13.44);
     
+/* supply data */
+---------------------
+    INSERT INTO t_sale (num, dt, id_client, e_state, discount) 
+    VALUES ('12sdsakkh3', TO_DATE('2019/03/09', 'yyyy/mm/dd'), 
+    (SELECT id_client FROM t_client WHERE UPPER(moniker)=UPPER('mysport')), 'done', 0);
+    ---------------------
+    INSERT INTO t_sale (num, dt, id_client, e_state, discount) 
+    VALUES ('1245sakkh3', TO_DATE('2019/04/01', 'yyyy/mm/dd'), 
+    (SELECT id_client FROM t_client WHERE UPPER(moniker)=UPPER('mysport')), 'done', 10);
+    ---------------------
+    INSERT INTO t_sale (num, dt, id_client, e_state, discount) 
+    VALUES ('1245swrkh6', TO_DATE('2019/04/07', 'yyyy/mm/dd'), 
+    (SELECT id_client FROM t_client WHERE UPPER(moniker)=UPPER('mysport')), 'done', 30);
+    ---------------------
+                    
+    
     --COMMIT;
     
     

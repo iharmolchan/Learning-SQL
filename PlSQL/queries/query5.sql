@@ -1,10 +1,10 @@
 ﻿--QUERY-05 Вывод каталога с отступами, для листа с товарами — число моделей и товаров в ним.
 
-   SELECT LPAD(' ',5*(LEVEL-1))||
-          code||
-          ': '||
-          name||
-          CASE WHEN number_of_models = 0 THEN '' ELSE '('||to_char(number_of_models)||')' END||
+   SELECT LPAD(' ',5*(LEVEL-1))                                                               ||
+          code                                                                                ||
+          ': '                                                                                ||
+          name                                                                                ||
+          CASE WHEN number_of_models = 0 THEN '' ELSE '('||to_char(number_of_models)||')' END ||
           CASE WHEN number_of_wares = 0 THEN '' ELSE '('||to_char(number_of_wares)||')' END
           "Code:Name(Number of models)(Number od wares)"          
    FROM t_ctl_node

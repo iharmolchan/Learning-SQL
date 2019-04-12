@@ -1,13 +1,13 @@
 ﻿--QUERY-06 Вывод каталога с отступами, для каждого узла — число моделей и товаров в нем и нижележащих узлах
 
-   SELECT LPAD(' ',5*(LEVEL-1))||
-          code||
-          ': '||
-          name||
-          '('||
-          number_of_models||
-          ')('||
-          number_of_wares||
+   SELECT LPAD(' ',5*(LEVEL-1)) ||
+          code                  ||
+          ': '                  ||
+          name                  ||
+          '('                   ||
+          number_of_models      ||
+          ')('                  ||
+          number_of_wares       ||
           ')'          
           "Code:Name(Number of models)(Number of wares)"
    FROM t_ctl_node

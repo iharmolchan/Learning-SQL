@@ -1,6 +1,13 @@
 ﻿--QUERY-03 Вывод каталога с отступами в соответствии с уровнями каталога. Для каждого узла — число нижележащих узлов.
    
-   SELECT LPAD(' ',5*(LEVEL-1))||code||': '||name||'('||number_of_children||')' "Code:Name(Number of childs)"
+   SELECT LPAD(' ',5*(LEVEL-1))  ||
+          code                   ||
+          ': '                   ||
+          name                   ||
+          '('                    ||
+          number_of_children     ||
+          ')'
+          "Code:Name(Number of childs)"
    FROM t_ctl_node
    INNER JOIN (   
      SELECT ( COUNT(*) -1 ) number_of_children, root
