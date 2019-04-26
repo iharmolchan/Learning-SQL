@@ -1,25 +1,31 @@
 ﻿--QUERY-03 Вывод каталога с отступами в соответствии с уровнями каталога. Для каждого узла — число нижележащих узлов.
-   
-   SELECT LPAD(' ',5*(LEVEL-1))  ||
-          code                   ||
-          ': '                   ||
-          name                   ||
-          '('                    ||
-          number_of_children     ||
-          ')'
-          "Code:Name(Number of childs)"
-   FROM t_ctl_node
-   INNER JOIN (   
-     SELECT ( COUNT(*) -1 ) number_of_children, root
-     FROM (
-       SELECT id_ctl_node, connect_by_root(code) root
-       FROM t_ctl_node
-       CONNECT BY id_parent = PRIOR id_ctl_node)
-     GROUP BY root)
-   ON t_ctl_node.code=root
-   CONNECT BY PRIOR id_ctl_node=id_parent
-   START WITH id_parent is null
-   ORDER SIBLINGS BY code;
-  
 
-   
+SELECT 
+   LPAD(' ', 5 * (LEVEL - 1)) || 
+   name                       ||
+   CASE  -- skip writing number of children for leafs
+      WHEN CONNECT_BY_ISLEAF=0 
+      THEN ' (' || number_of_children || ')' 
+   END
+   AS "Name (Number of underlying nodes)"
+FROM 
+   t_ctl_node
+LEFT JOIN ( 
+   -- counting number of roots (e.g. number og children for every root)
+   SELECT 
+      COUNT(*) number_of_children, 
+      root_node_id
+   FROM (
+      -- selecting root node for every child node from every level
+      SELECT 
+         connect_by_root(id_ctl_node) root_node_id
+      FROM 
+         t_ctl_node
+      WHERE LEVEL = 2 -- number of levels of children to count (1st lvl - node themselves, 2nd - childes of nodes, >2nd lvl - childs of childs etc.)
+      CONNECT BY id_parent = PRIOR id_ctl_node)
+   GROUP BY root_node_id)
+ON id_ctl_node = root_node_id
+CONNECT BY id_parent = PRIOR id_ctl_node
+START WITH id_parent IS NULL
+ORDER SIBLINGS BY id_ctl_node;
+                              

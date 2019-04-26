@@ -21,19 +21,16 @@
 /* department data */
 ---------------------
     INSERT INTO t_dept (name)
-    VALUES ('Company');
-    ---------------------    
-    INSERT INTO t_dept (name, id_parent)
-    VALUES ('Administration', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('company')));
+    VALUES ('Administration');
     ---------------------
-    INSERT INTO t_dept (name, id_parent)
-    VALUES ('IT', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('company')));
+    INSERT INTO t_dept (name)
+    VALUES ('IT');
     ---------------------
-    INSERT INTO t_dept (name, id_parent)
-    VALUES ('Sales', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('company')));
+    INSERT INTO t_dept (name)
+    VALUES ('Sales');
     ---------------------
-    INSERT INTO t_dept (name, id_parent)
-    VALUES ('Delivery', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('company')));
+    INSERT INTO t_dept (name)
+    VALUES ('Delivery');
     ---------------------
     INSERT INTO t_dept (name, id_parent)
     VALUES ('Grodno region', (SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('sales')));
@@ -144,15 +141,10 @@
 /* node data */
 ---------------------
     INSERT INTO t_ctl_node (code, name) 
-    VALUES ('all', 'all the wares');
+    VALUES ('clothing', 'Clothing');
     ---------------------
-    INSERT INTO t_ctl_node (id_parent, code, name) 
-    VALUES ((SELECT id_ctl_node FROM t_ctl_node WHERE UPPER(code)=UPPER('all')),
-    'clothing', 'Clothing');
-    ---------------------
-    INSERT INTO t_ctl_node (id_parent, code, name) 
-    VALUES ((SELECT id_ctl_node FROM t_ctl_node WHERE UPPER(code)=UPPER('all')),
-    'shoes', 'Shoes');
+    INSERT INTO t_ctl_node (code, name) 
+    VALUES ('shoes', 'Shoes');
     ---------------------        
     INSERT INTO t_ctl_node (id_parent, code, name) 
     VALUES ((SELECT id_ctl_node FROM t_ctl_node WHERE UPPER(code)=UPPER('clothing')),
@@ -600,7 +592,7 @@
     'L', '41');
     
 
-/* model price data */
+/* ware price data */
 ---------------------
     INSERT INTO t_price_ware (id_ware, dt_beg, dt_end, price) 
     VALUES ((SELECT id_ware FROM t_ware WHERE UPPER(moniker)=UPPER('lee rider s')),
@@ -796,7 +788,7 @@
     
 /* supply data */
 ---------------------
-    INSERT INTO t_sale (num, dt, id_client, e_state, discount) 
+   /* INSERT INTO t_sale (num, dt, id_client, e_state, discount) 
     VALUES ('12sdsakkh3', TO_DATE('2019/03/09', 'yyyy/mm/dd'), 
     (SELECT id_client FROM t_client WHERE UPPER(moniker)=UPPER('mysport')), 'done', 0);
     ---------------------
@@ -807,7 +799,7 @@
     INSERT INTO t_sale (num, dt, id_client, e_state, discount) 
     VALUES ('1245swrkh6', TO_DATE('2019/04/07', 'yyyy/mm/dd'), 
     (SELECT id_client FROM t_client WHERE UPPER(moniker)=UPPER('mysport')), 'done', 30);
-    ---------------------
+    ---------------------*/
                     
     
     --COMMIT;
