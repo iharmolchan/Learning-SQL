@@ -4,7 +4,7 @@ SELECT
    LPAD(' ', 5 * (LEVEL - 1)) || 
    name                       ||
    CASE  -- skip writing number of children for leafs
-      WHEN CONNECT_BY_ISLEAF=0 
+      WHEN CONNECT_BY_ISLEAF = 0 
       THEN ' (' || number_of_children || ')' 
    END
    AS "Name (Number of underlying nodes)"
