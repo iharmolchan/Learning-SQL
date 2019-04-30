@@ -4,6 +4,6 @@
 CREATE OR REPLACE TRIGGER supply_str_summa_and_nds_count
 BEFORE INSERT OR UPDATE ON t_supply_str FOR EACH ROW
 BEGIN
-  :new.summa:=:new.qty*:new.price;
-  :new.nds:=:new.summa*0.2;
+   :new.summa:=:new.qty*:new.price;
+   :new.nds:=:new.summa*0.2;
 END;

@@ -1,4 +1,4 @@
-DECLARE
+﻿DECLARE
    CURSOR cur_sales IS SELECT  id_sale  FROM t_sale;
    n_wares NUMBER(1,0);
    r_ware t_ware%ROWTYPE;
@@ -7,7 +7,7 @@ DECLARE
    n_ware_price t_ware.price%TYPE;
    n_random NUMBER (2,0);
 BEGIN
-   SELECT count(*)-1 INTO n_wares_quantity FROM t_ware;
+   SELECT COUNT(*)-1 INTO n_wares_quantity FROM t_ware;
    FOR r_sale IN cur_sales
    LOOP
       n_wares:= ROUND(DBMS_RANDOM.VALUE(1,7));

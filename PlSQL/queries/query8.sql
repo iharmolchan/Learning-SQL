@@ -3,11 +3,11 @@
 
 SELECT
    label         AS ware_label,
-   count(*)      AS number_of_sales,
-   sum(qty)      AS overall_quantity,
-   avg(summa)    AS average_sale,
-   max(discount) AS max_discount,
-   min(discount) AS min_discount
+   COUNT(*)      AS number_of_sales,
+   SUM(qty)      AS overall_quantity,
+   AVG(summa)    AS average_sale,
+   MAX(discount) AS max_discount,
+   MIN(discount) AS min_discount
 FROM
    t_sale_str
 INNER JOIN 
@@ -17,4 +17,4 @@ INNER JOIN
 GROUP BY 
    label
 ORDER BY
-   ware_label       
+   ware_label    

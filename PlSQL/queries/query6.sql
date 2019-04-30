@@ -31,5 +31,5 @@ INNER JOIN (
    GROUP BY root_node_id)
 ON id_ctl_node=root_node_id
 CONNECT BY PRIOR id_ctl_node=id_parent
-START WITH id_parent is null
+START WITH id_parent IS NULL
 ORDER SIBLINGS BY name;

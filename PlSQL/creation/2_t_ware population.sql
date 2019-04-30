@@ -1,4 +1,4 @@
-DECLARE
+﻿DECLARE
    CURSOR cur_models IS SELECT  id_model, moniker, name  FROM t_model  ORDER BY id_model;
    number_of_wares NUMBER(10,0);
    orig_sz t_ware.sz_orig%TYPE;

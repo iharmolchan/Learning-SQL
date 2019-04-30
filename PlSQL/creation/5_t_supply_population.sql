@@ -1,4 +1,4 @@
-DECLARE
+﻿DECLARE
    n_random NUMBER (1,0);
 BEGIN
    FOR n_counter IN 1..1000
@@ -13,10 +13,10 @@ BEGIN
             WHEN n_random BETWEEN 0 AND 8 THEN 'DONE'
             ELSE 'NEW'  
          END);
-  END LOOP;
-  COMMIT; 
+   END LOOP;
+   COMMIT; 
 EXCEPTION
 WHEN OTHERS THEN
-  DBMS_OUTPUT.PUT_LINE( SQLERRM );
+   DBMS_OUTPUT.PUT_LINE( SQLERRM );
 END;
 /
