@@ -1,6 +1,8 @@
 CREATE OR REPLACE TRIGGER fill_summa_nds_supply
-AFTER INSERT OR UPDATE ON t_supply_str 
+BEFORE INSERT OR UPDATE ON t_supply_str 
 FOR EACH ROW
+FOLLOWS fill_summa_nds_supply_str
+WHEN (OLD.qty!=NEW.qty OR OLD.price!=NEW.price OR OLD.qty IS NULL)
 DECLARE
    n_summa_exists NUMBER;  
 BEGIN
