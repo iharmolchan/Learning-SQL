@@ -1,4 +1,4 @@
-﻿DECLARE
+DECLARE
    CURSOR cur_sales IS SELECT  id_sale  FROM t_sale;
    n_wares NUMBER(1,0);
    r_ware t_ware%ROWTYPE;
@@ -28,7 +28,10 @@ BEGIN
             n_ware_id,
             ROUND(DBMS_RANDOM.VALUE(1,3)),
             n_ware_price,
-            ROUND(DBMS_RANDOM.VALUE(0,40)));
+            CASE
+               WHEN n_random BETWEEN 0 AND 90 THEN 0
+               ELSE ROUND(DBMS_RANDOM.VALUE(0,49))
+            END);
       END LOOP;
    END LOOP;
    COMMIT;  

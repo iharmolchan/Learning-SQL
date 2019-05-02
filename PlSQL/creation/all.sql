@@ -16,4 +16,4 @@
 @"E:\work\Learning-SQL\PlSQL\creation\8_1_ware_quantity_change_on_sale_trigger.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\8_2_fill_summa_nds_sale_str_trigger.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\8_3_fill_summa_nds_sale_trigger.sql" 
-@"E:\work\Learning-SQL\PlSQL\creation\8_t_sale_str_population.sql" 
+@"E:\work\Learning-SQL\PlSQL\creation\8_t_sale_str_population.sql"

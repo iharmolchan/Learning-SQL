@@ -1,7 +1,7 @@
 DECLARE
    n_random NUMBER (1,0);
 BEGIN
-   FOR n_counter IN 1..10000
+   FOR n_counter IN 1..200
    LOOP
       n_random:= ROUND(DBMS_RANDOM.VALUE(0,9));   
       INSERT INTO 
@@ -10,10 +10,13 @@ BEGIN
          TO_DATE(ROUND(DBMS_RANDOM.VALUE(2458395,2458602)),'J'), 
          ROUND(DBMS_RANDOM.VALUE(100000,100016)), 
          CASE
-            WHEN n_random BETWEEN 0 AND 7 THEN 'DONE'
+            WHEN n_random BETWEEN 1 AND 8 THEN 'DONE'
             ELSE 'NEW'  
          END,
-         ROUND(DBMS_RANDOM.VALUE(0,30)));
+         CASE
+            WHEN n_random BETWEEN 0 AND 8 THEN 0
+            ELSE ROUND(DBMS_RANDOM.VALUE(0,50))
+         END);
   END LOOP;
   COMMIT; 
 EXCEPTION

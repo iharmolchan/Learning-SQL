@@ -1,4 +1,3 @@
-﻿    
     DROP TABLE t_rest;
     DROP TABLE t_price_model;
     DROP TABLE t_price_ware;

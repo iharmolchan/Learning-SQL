@@ -1,4 +1,4 @@
-﻿DECLARE
+DECLARE
    CURSOR cur_supplies IS SELECT  id_supply  FROM t_supply;
    n_wares NUMBER(2,0);
    r_ware t_ware%ROWTYPE;

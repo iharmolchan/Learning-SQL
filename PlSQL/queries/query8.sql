@@ -1,13 +1,13 @@
-﻿--QUERY-08 Вычислить число строк продаж, количество, сумму средневзвешенную, 
+--QUERY-08 Вычислить число строк продаж, количество, сумму средневзвешенную, 
 --         максимальную и минимальную скидку по торговой марке (t_model.label).
 
 SELECT
-   label         AS ware_label,
-   COUNT(*)      AS number_of_sales,
-   SUM(qty)      AS overall_quantity,
-   AVG(summa)    AS average_sale,
-   MAX(discount) AS max_discount,
-   MIN(discount) AS min_discount
+   label                 AS ware_label,
+   COUNT(*)              AS number_of_sales,
+   SUM(qty)              AS overall_quantity,
+   ROUND(AVG(summa), 2)  AS average_sale,
+   MAX(discount)         AS max_discount,
+   MIN(discount)         AS min_discount
 FROM
    t_sale_str
 INNER JOIN 

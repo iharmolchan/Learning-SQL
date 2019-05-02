@@ -1,7 +1,7 @@
-﻿DECLARE
+DECLARE
    n_random NUMBER (1,0);
 BEGIN
-   FOR n_counter IN 1..1000
+   FOR n_counter IN 1..100
    LOOP
       n_random:= ROUND(DBMS_RANDOM.VALUE(0,9));   
       INSERT INTO 
