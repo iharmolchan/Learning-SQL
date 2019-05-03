@@ -5,18 +5,26 @@ WITH
    department_sales_report (id_dept, number_of_sales, number_of_sale_strings, sales_quantity, sales_sum) 
 AS( 
    SELECT
-      id_dept,
+      root_dept_id,
       COUNT(DISTINCT id_sale),
       COUNT(DISTINCT id_sale_str),
       SUM (qty),
-      SUM (st.summa)
-   FROM
-      t_dept   
-   INNER JOIN t_client USING (id_dept)
-   INNER JOIN t_sale USING (id_client)
-   INNER JOIN t_sale_str st USING (id_sale)
+      SUM (summa)
+   FROM(
+      SELECT
+         connect_by_root(id_dept) root_dept_id,
+         id_sale,
+         id_sale_str,
+         qty,
+         st.summa summa
+      FROM
+         t_dept   
+      LEFT JOIN t_client USING (id_dept)
+      LEFT JOIN t_sale USING (id_client)
+      LEFT JOIN t_sale_str st USING (id_sale)
+      CONNECT BY PRIOR id_dept=id_parent)
    GROUP BY
-      id_dept)
+      root_dept_id)
 SELECT 
    LPAD(' ',5*(LEVEL-1)) || name   AS "Name",
    NVL(number_of_sales, 0)         AS number_of_sales,

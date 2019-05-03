@@ -3,13 +3,13 @@
 --          товаров и моделей, колдичество и сумму продаж.
 
 SELECT
-   round(discount)           AS discount_percent,
+   ROUND(discount)           AS discount_percent,
    COUNT(*)                  AS number_of_positions, 
    COUNT(DISTINCT id_ware)   AS number_of_wares,
    COUNT(DISTINCT id_model)  AS number_of_models,  
    SUM(summa)                AS sum_of_sales, 
    SUM (QTY)                 AS quantity_of_wares_sold  
-FROM 
+FROM
    t_sale_str
 INNER JOIN t_ware USING(id_ware)   
 INNER JOIN t_model USING(id_model)
