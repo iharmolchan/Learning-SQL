@@ -88,7 +88,7 @@
         num NUMBER(6,0),
         id_ware NUMBER(10,0) NOT NULL,
         qty NUMBER(6,0) NOT NULL,
-        price NUMBER(8,2) NOT NULL,
+        price NUMBER(8,2),
         discount NUMBER(8,6),
         disc_price NUMBER(8,2),
         summa NUMBER(14,2),

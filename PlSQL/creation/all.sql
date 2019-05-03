@@ -1,6 +1,6 @@
 
-@"E:\work\Learning-SQL\PlSQL\creation\0_drop_tables.sql"
-@"E:\work\Learning-SQL\PlSQL\creation\0_create_tables.sql"  
+@"E:\work\Learning-SQL\PlSQL\creation\0_drop_tables.sql" 
+@"E:\work\Learning-SQL\PlSQL\creation\0_create_tables.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\1_initial_data_population.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\2_t_ware population.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\3_1_add_price_to_model_trigger.sql" 
@@ -16,6 +16,7 @@
 @"E:\work\Learning-SQL\PlSQL\creation\7_1_ware_quantity_change_on_sale_trigger.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\7_t_sale_population.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\8_1_ware_quantity_change_on_sale_trigger.sql" 
+@"E:\work\Learning-SQL\PlSQL\creation\8_2.1_fill_price_trigger.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\8_2_fill_summa_nds_sale_str_trigger.sql" 
 @"E:\work\Learning-SQL\PlSQL\creation\8_3_fill_summa_nds_sale_trigger.sql" 
-@"E:\work\Learning-SQL\PlSQL\creation\8_t_sale_str_population.sql" 
+@"E:\work\Learning-SQL\PlSQL\creation\8_t_sale_str_population.sql"

@@ -17,7 +17,7 @@ BEGIN
          n_ware_id:= ROUND(DBMS_RANDOM.VALUE(100000,100000+n_wares_quantity));
          CASE
             WHEN n_random BETWEEN 0 AND 98 THEN 
-               SELECT price INTO n_ware_price FROM t_ware WHERE id_ware = n_ware_id;
+               n_ware_price:= null;
             ELSE 
                n_ware_price:= ROUND(DBMS_RANDOM.VALUE(10,1000), 2); 
          END CASE;        
