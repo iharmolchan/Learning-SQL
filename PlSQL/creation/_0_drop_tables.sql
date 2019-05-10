@@ -1,5 +1,7 @@
     DROP TABLE t_rest;
+	DROP TABLE t_price_model_hist;
     DROP TABLE t_price_model;
+	DROP TABLE t_price_ware_hist;
     DROP TABLE t_price_ware;
     DROP TABLE t_sale_rep;
     DROP TABLE t_rest_hist;    

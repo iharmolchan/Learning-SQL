@@ -11,7 +11,7 @@ BEGIN
 
    IF :new.discount>20 AND n_is_client_vip=0 THEN
       RAISE_APPLICATION_ERROR(-20010,'Non vip clients can''t have discount more then 20%');
-   end if;
+   END IF;
 END;
 
 
