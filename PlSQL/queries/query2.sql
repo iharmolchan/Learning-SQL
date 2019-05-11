@@ -1,4 +1,4 @@
-﻿--QUERY-02 Найти продажи, цены без скидки в которых отличаются от цены на товар.
+--QUERY-02 Найти продажи, цены без скидки в которых отличаются от цены на товар.
 
 SELECT 
    id_sale,
@@ -6,11 +6,13 @@ SELECT
    c.name   AS client_name,
    s.price  AS sale_price,
    w.name   AS ware_name,
-   w.price  AS ware_price
+   w.price  AS ware_price,
+   w.price*(1+margin/100)
 FROM 
    t_sale
 INNER JOIN t_client c USING (id_client)
 INNER JOIN t_sale_str s USING (id_sale)
 INNER JOIN t_ware w USING (id_ware)
 INNER JOIN t_price_ware USING (id_ware)
-WHERE s.price != w.price
+WHERE 
+   s.price != ROUND(w.price * (1 + margin/100), 2)

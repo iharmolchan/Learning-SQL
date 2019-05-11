@@ -95,7 +95,7 @@
         id_ware NUMBER(10,0) NOT NULL,
         qty NUMBER(6,0) NOT NULL,
         price NUMBER(8,2),
-        discount NUMBER(8,6),
+        discount NUMBER(8,6) DEFAULT 0,
         disc_price NUMBER(8,2),
         summa NUMBER(14,2),
         nds NUMBER(14,2),
@@ -108,7 +108,7 @@
         dt DATE NOT NULL,
         id_client NUMBER(10,0) NOT NULL,
         e_state VARCHAR2(10) NOT NULL,
-        discount NUMBER(8,6),
+        discount NUMBER(8,6) DEFAULT 0,
         summa NUMBER(14,2),
         nds NUMBER(14,2),
         PRIMARY KEY (id_sale)
@@ -237,6 +237,12 @@
         FOREIGN KEY (id_client) 
         REFERENCES t_client
         ON DELETE CASCADE;
+        
+    ALTER TABLE t_sale_str
+        ADD CONSTRAINT sale_str_sale_fk 
+        FOREIGN KEY (id_sale) 
+        REFERENCES t_sale
+        ON DELETE CASCADE;    
         
     ALTER TABLE t_sale_str    
         ADD CONSTRAINT sale_ware_fk 

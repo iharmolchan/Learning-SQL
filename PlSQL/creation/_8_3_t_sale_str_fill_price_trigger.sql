@@ -11,7 +11,7 @@ BEGIN
    SELECT price INTO n_price FROM t_price_ware WHERE id_ware = :new.id_ware;
    SELECT margin INTO n_margin FROM t_price_ware WHERE id_ware = :new.id_ware;    
 
-   :new.price:= n_price * (n_margin / 100);
+   :new.price:= n_price * (1 + n_margin / 100);
    :new.disc_price:= :new.price * (1 - :new.discount / 100) * (1 - n_sale_discount / 100);  
 END;
 /
