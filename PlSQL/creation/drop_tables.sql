@@ -14,6 +14,4 @@
     DROP TABLE t_supplier;    
     DROP TABLE t_ware;
     DROP TABLE t_model;
-    DROP TABLE t_ctl_node;  
-  
-    COMMIT;
+    DROP TABLE t_ctl_node;

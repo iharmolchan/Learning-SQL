@@ -86,25 +86,24 @@
     CREATE TABLE t_sale_rep (
         id_ware NUMBER(10,0) NOT NULL,
         month DATE NOT NULL,
-        inp_qty NUMBER(6,0),
-        inp_sum NUMBER(14,2),
-        supply_qty NUMBER(6,0),
-        supply_sum NUMBER(14,2),
-        sale_qty NUMBER(6,0),
-        sale_sum NUMBER(14,2),
-        out_qty NUMBER(6,0),
-        out_sum NUMBER(14,2),
+        inp_qty NUMBER(6,0) DEFAULT 0,
+        inp_sum NUMBER(14,2) DEFAULT 0,
+        supply_qty NUMBER(6,0) DEFAULT 0,
+        supply_sum NUMBER(14,2) DEFAULT 0,
+        sale_qty NUMBER(6,0) DEFAULT 0,
+        sale_sum NUMBER(14,2) DEFAULT 0,
+        out_qty NUMBER(6,0) DEFAULT 0,
+        out_sum NUMBER(14,2) DEFAULT 0,
         PRIMARY KEY (id_ware, month),
-        CONSTRAINT check_date_is_month CHECK (month = TRUNC( month, 'MM' )),
-		CONSTRAINT check_positive_sale_rep_hist_inp_qty CHECK (inp_qty >= 0),
+        CONSTRAINT check_date_is_month CHECK (month = TRUNC( month, 'MM' ))--,
+		/*CONSTRAINT check_positive_sale_rep_hist_inp_qty CHECK (inp_qty >= 0),
 		CONSTRAINT check_positive_sale_rep_hist_inp_sum CHECK (inp_sum >= 0),
 		CONSTRAINT check_positive_sale_rep_hist_supply_qty CHECK (supply_qty >= 0),
 		CONSTRAINT check_positive_sale_rep_hist_supply_sum CHECK (supply_sum >= 0),
 		CONSTRAINT check_positive_sale_rep_hist_sale_qty CHECK (sale_qty >= 0),
 		CONSTRAINT check_positive_sale_rep_hist_sale_sum CHECK (sale_sum >= 0),
 		CONSTRAINT check_positive_sale_rep_hist_out_qty CHECK (out_qty >= 0),
-		CONSTRAINT check_positive_sale_rep_hist_out_sum CHECK (out_sum >= 0)
-		
+		CONSTRAINT check_positive_sale_rep_hist_out_sum CHECK (out_sum >= 0)*/		
     );
     
      CREATE TABLE t_sale_str (
@@ -291,5 +290,3 @@
         FOREIGN KEY (id_ware) 
         REFERENCES t_ware
         ON DELETE CASCADE;
-		
-COMMIT;

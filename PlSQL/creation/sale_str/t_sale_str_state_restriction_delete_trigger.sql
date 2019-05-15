@@ -6,7 +6,6 @@ FOR EACH ROW
 DECLARE
    v_state t_sale.e_state%TYPE;
 BEGIN
-   dbms_output.put_line('sale_str trigger 8.1');
    SELECT e_state INTO v_state FROM t_sale WHERE id_sale = :old.id_sale;
    IF UPPER(v_state) = 'DONE' THEN
       RAISE_APPLICATION_ERROR(-20010,'Can''t delete sales with ''DONE'' status');
