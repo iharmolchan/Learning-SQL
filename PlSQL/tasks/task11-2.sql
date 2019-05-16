@@ -2,25 +2,37 @@
 --        Это сложнее, чем набор процедур.
 
 CREATE OR REPLACE TRIGGER t_node_fill_tree_code_update
-FOR UPDATE OF code ON t_ctl_node
+FOR UPDATE ON t_ctl_node
 COMPOUND TRIGGER
    TYPE idNodeArray IS TABLE OF t_ctl_node.id_ctl_node%TYPE INDEX BY BINARY_INTEGER;
    v_node_ids idNodeArray;   
    v_parent_tree_code t_ctl_node.tree_code%TYPE;   
    n_id_ctl_node t_ctl_node.id_ctl_node%TYPE;   
    CURSOR cur_children_ids IS SELECT id_ctl_node, id_parent
-                              FROM t_ctl_node
-                              WHERE id_ctl_node != n_id_ctl_node
+                              FROM t_ctl_node                             
                               CONNECT BY PRIOR id_ctl_node = id_parent
                               START WITH id_ctl_node = n_id_ctl_node
                               ORDER BY LEVEL;
+   is_code_or_parent_changed BOOLEAN := FALSE;
                               
 BEFORE EACH ROW IS
-BEGIN   
+BEGIN
    IF :new.code != :old.code THEN
-      :new.tree_code := CONCAT(SUBSTR(:old.tree_code, 1, INSTR( :old.tree_code, :old.code, -1) -2), '/'||:new.code);
-      v_node_ids(v_node_ids.count) := :new.id_ctl_node;     
+      :new.tree_code := CONCAT(SUBSTR(:old.tree_code, 1, INSTR( :old.tree_code, :old.code, -1) - 2), '/'||:new.code);
+       is_code_or_parent_changed := TRUE;
    END IF;
+
+   IF :new.id_parent != :old.id_parent OR 
+     (:old.id_parent IS NULL AND :new.id_parent IS NOT NULL) OR 
+     (:new.id_parent IS NULL AND :old.id_parent IS NOT NULL)
+   THEN
+      is_code_or_parent_changed := TRUE;
+   END IF;
+      
+   IF is_code_or_parent_changed = TRUE THEN
+      v_node_ids(v_node_ids.count) := :new.id_ctl_node; 
+      is_code_or_parent_changed := FALSE;
+   END IF;    
 END BEFORE EACH ROW;
   
 AFTER STATEMENT IS
@@ -31,7 +43,12 @@ BEGIN
          n_id_ctl_node := v_node_ids(n_array_index);
          FOR r_node IN cur_children_ids
          LOOP         
-            SELECT tree_code INTO v_parent_tree_code FROM t_ctl_node WHERE id_ctl_node = r_node.id_parent;            
+            BEGIN
+               SELECT tree_code INTO v_parent_tree_code FROM t_ctl_node WHERE id_ctl_node = r_node.id_parent;
+            EXCEPTION WHEN NO_DATA_FOUND THEN
+               NULL;   
+            END;
+                           
             UPDATE t_ctl_node 
             SET tree_code = CONCAT (v_parent_tree_code, '/'||code)
             WHERE id_ctl_node = r_node.id_ctl_node;       

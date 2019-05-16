@@ -61,7 +61,11 @@
 
 --sale report triggers
 @"E:\work\Learning-SQL\PlSQL\creation\sale_rep\t_sales_report_fill_fields_insert_trigger.sql" 
-@"E:\work\Learning-SQL\PlSQL\creation\sale_rep\t_sales_report_fill_fields_update_trigger.sql" 
+@"E:\work\Learning-SQL\PlSQL\creation\sale_rep\t_sales_report_fill_fields_update_trigger.sql"
+
+--ctl node triggers
+@"E:\work\Learning-SQL\PlSQL\creation\ctl_node\t_node_fill_tree_code_insert_trigger.sql" 
+@"E:\work\Learning-SQL\PlSQL\creation\ctl_node\t_node_fill_tree_code_update_trigger.sql"  
 
 -- population
 @"E:\work\Learning-SQL\PlSQL\population\_1_initial_data_population.sql" 

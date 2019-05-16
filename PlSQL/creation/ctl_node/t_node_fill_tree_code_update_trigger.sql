@@ -1,8 +1,8 @@
 --TASK-11 Альтернатива предыдущему: триггера, обеспечивающие вычисление иерархического кода для узлов каталога. 
 --        Это сложнее, чем набор процедур.
 
-CREATE OR REPLACE TRIGGER t_node_fill_tree_code_parent_update
-FOR UPDATE OF id_parent ON t_ctl_node
+CREATE OR REPLACE TRIGGER t_node_fill_tree_code_update
+FOR UPDATE ON t_ctl_node
 COMPOUND TRIGGER
    TYPE idNodeArray IS TABLE OF t_ctl_node.id_ctl_node%TYPE INDEX BY BINARY_INTEGER;
    v_node_ids idNodeArray;   
@@ -13,14 +13,26 @@ COMPOUND TRIGGER
                               CONNECT BY PRIOR id_ctl_node = id_parent
                               START WITH id_ctl_node = n_id_ctl_node
                               ORDER BY LEVEL;
+   is_code_or_parent_changed BOOLEAN := FALSE;
+                              
 BEFORE EACH ROW IS
 BEGIN
+   IF :new.code != :old.code THEN
+      :new.tree_code := CONCAT(SUBSTR(:old.tree_code, 1, INSTR( :old.tree_code, :old.code, -1) - 2), '/'||:new.code);
+       is_code_or_parent_changed := TRUE;
+   END IF;
+
    IF :new.id_parent != :old.id_parent OR 
      (:old.id_parent IS NULL AND :new.id_parent IS NOT NULL) OR 
      (:new.id_parent IS NULL AND :old.id_parent IS NOT NULL)
    THEN
-      v_node_ids(v_node_ids.count) := :new.id_ctl_node; 
+      is_code_or_parent_changed := TRUE;
    END IF;
+      
+   IF is_code_or_parent_changed = TRUE THEN
+      v_node_ids(v_node_ids.count) := :new.id_ctl_node; 
+      is_code_or_parent_changed := FALSE;
+   END IF;    
 END BEFORE EACH ROW;
   
 AFTER STATEMENT IS
@@ -45,5 +57,5 @@ BEGIN
    END IF;
 END AFTER STATEMENT;
 
-END t_node_fill_tree_code_parent_update;
+END t_node_fill_tree_code_update;
 /
