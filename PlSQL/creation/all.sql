@@ -75,6 +75,6 @@
 @"E:\work\Learning-SQL\PlSQL\population\_5_t_supply_population.sql" 
 @"E:\work\Learning-SQL\PlSQL\population\_6_t_supply_str_population.sql" 
 @"E:\work\Learning-SQL\PlSQL\population\_7_t_sale_population.sql" 
-@"E:\work\Learning-SQL\PlSQL\population\_8_t_sale_str_population.sql"   
+@"E:\work\Learning-SQL\PlSQL\population\_8_t_sale_str_population.sql"  
   
 

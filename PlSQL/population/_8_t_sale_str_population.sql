@@ -4,18 +4,16 @@ DECLARE
    CURSOR cur_sales IS SELECT  id_sale  FROM t_sale;
    n_wares NUMBER(1,0);
    r_ware t_ware%ROWTYPE;
-   n_wares_quantity NUMBER; 
    n_ware_id t_ware.id_ware%TYPE;
    n_random NUMBER (2,0);
 BEGIN
-   SELECT COUNT(*)-1 INTO n_wares_quantity FROM t_ware;
    FOR r_sale IN cur_sales
    LOOP
       n_wares:= ROUND(DBMS_RANDOM.VALUE(1,7)); -- set random number of wares in sales (from 1 to 7)
       FOR n_counter IN 1..n_wares
       LOOP
-         n_random:= ROUND(DBMS_RANDOM.VALUE(0,99));   
-         n_ware_id:= ROUND(DBMS_RANDOM.VALUE(100000,100000 + n_wares_quantity)); -- set random ware id
+         n_random:= ROUND(DBMS_RANDOM.VALUE(0,99));
+         SELECT id_ware INTO n_ware_id FROM t_ware ORDER BY DBMS_RANDOM.VALUE FETCH FIRST 1 ROW ONLY; -- set random ware id
          INSERT INTO 
             t_sale_str (id_sale, id_ware, qty, discount)
          VALUES (

@@ -9,13 +9,20 @@ COMPOUND TRIGGER
       out_qty t_sale_rep.out_qty%TYPE,
       out_sum t_sale_rep.out_sum%TYPE);
    TYPE outDataArray IS TABLE OF outData INDEX BY BINARY_INTEGER;
-   v_out_data outDataArray;  
-   
+   v_out_data outDataArray;   
    d_next_month t_sale_rep.month%TYPE;
+   ZERO_DIVISION EXCEPTION;
+   PRAGMA EXCEPTION_INIT(ZERO_DIVISION, -01476);
+   n_ware_price t_price_ware.price%TYPE;
 BEFORE EACH ROW IS
 BEGIN   
    :new.out_qty := :new.inp_qty + :new.supply_qty - :new.sale_qty;
-   :new.out_sum := (:new.inp_sum + :new.supply_sum) * (1 - :new.sale_qty / (:new.inp_qty + :new.supply_qty));
+   BEGIN
+      :new.out_sum := (:new.inp_sum + :new.supply_sum) * (1 - :new.sale_qty / (:new.inp_qty + :new.supply_qty));
+   EXCEPTION WHEN ZERO_DIVISION THEN
+      SELECT price INTO n_ware_price FROM t_price_ware WHERE id_ware = :new.id_ware;
+      :new.out_sum := :new.out_qty * n_ware_price;
+   END;
    
    v_out_data(v_out_data.count).id_ware := :new.id_ware;
    v_out_data(v_out_data.count - 1).month := :new.month;
