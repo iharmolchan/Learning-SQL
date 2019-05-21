@@ -1,5 +1,7 @@
 CREATE OR REPLACE TRIGGER t_sale_disable_sale_str_delete_triggers
-BEFORE DELETE ON t_sale 
+BEFORE DELETE ON t_sale
+FOR EACH ROW
+FOLLOWS t_sale_state_restriction_delete  
 DECLARE
    PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
