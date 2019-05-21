@@ -21,7 +21,7 @@ BEGIN
       END;
       IF r_ware.qty - n_ware_rest > 0 THEN 
          v_rest(v_rest.count).id_ware := r_ware.id_ware;
-         v_rest(v_rest.count - 1).qty := r_ware.qty;
+         v_rest(v_rest.count - 1).qty := r_ware.qty - n_ware_rest;
       END IF;
    END LOOP;
       
