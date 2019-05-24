@@ -10,12 +10,13 @@ FROM
 INNER JOIN t_ware USING (id_model)
 INNER JOIN t_sale_str USING (id_ware)
 WHERE
-   discount>0
+   discount > 0
 GROUP BY 
    id_model, 
    m.name
 HAVING 
-   AVG(discount)>(SELECT AVG(discount)FROM t_sale_str WHERE discount>0)+15
+   AVG(discount) > (SELECT AVG(discount)FROM t_sale_str WHERE discount>0) + 15;
+/
 
 
 

@@ -8,11 +8,7 @@ IS
    PROCEDURE set_to_date (to_date_p IN DATE);
 END;
 /
---context
-CREATE OR REPLACE CONTEXT shop_app_context
-USING pkg_shop_app_context
-ACCESSED GLOBALLY;
-/
+
 --package body
 CREATE OR REPLACE PACKAGE BODY pkg_shop_app_context
 IS
@@ -31,6 +27,13 @@ IS
    END;
 END;
 /
+
+--context
+CREATE OR REPLACE CONTEXT shop_app_context
+USING pkg_shop_app_context
+ACCESSED GLOBALLY;
+/
+
 -- creating view using context and 4 CTEs to get data
 CREATE OR REPLACE VIEW vw_rest_ware_report
 AS

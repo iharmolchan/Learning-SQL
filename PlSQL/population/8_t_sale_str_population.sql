@@ -22,7 +22,7 @@ BEGIN
             ROUND(DBMS_RANDOM.VALUE(1,3)), -- random quantity of ware ( 1 to 3)
             CASE
                WHEN n_random BETWEEN 0 AND 90 THEN 0 -- 90% chance to get zero discount
-               ELSE ROUND(DBMS_RANDOM.VALUE(0,49))   -- 10% chance to get discount between 0 and 49% 
+               ELSE ROUND(DBMS_RANDOM.VALUE(0,10)) * 5   -- 10% chance to get discount between 0 and 50% 
             END);
       END LOOP;
    END LOOP;

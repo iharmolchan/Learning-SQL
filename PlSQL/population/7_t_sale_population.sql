@@ -14,7 +14,7 @@ BEGIN
          UPPER('NEW'),
          CASE
             WHEN n_random BETWEEN 0 AND 8 THEN 0  -- 90% to get discount eqal to zero
-            ELSE ROUND(DBMS_RANDOM.VALUE(0,50))   -- 10% to get discount between 0 and 50%
+            ELSE ROUND(DBMS_RANDOM.VALUE(0,10)) * 5   -- 10% to get discount between 0 and 50%
          END);
   END LOOP;
   COMMIT; 

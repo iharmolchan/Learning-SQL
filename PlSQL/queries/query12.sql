@@ -15,7 +15,7 @@ AS(
    GROUP BY
       id_dept)
 SELECT 
-   LPAD(' ',5*(LEVEL-1)) || name  AS "Name",
+   LPAD(' ', 5 * (LEVEL - 1)) || name  AS "Name",
    NVL(sales_sum, 0)              AS sales_sum
 FROM 
    t_dept
