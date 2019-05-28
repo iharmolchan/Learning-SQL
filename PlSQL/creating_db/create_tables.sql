@@ -247,7 +247,7 @@
         ADD CONSTRAINT model_fk 
         FOREIGN KEY (id_model) 
         REFERENCES t_model
-        ON DELETE SET NULL;
+        ON DELETE CASCADE;
         
     ALTER TABLE t_price_ware    
         ADD CONSTRAINT price_ware_fk 

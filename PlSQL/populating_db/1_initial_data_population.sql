@@ -100,82 +100,82 @@
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('grodno region')),
-    'Нелва', 'Магазин Нелва', 0, 'Slonim');
+    'NELVA', 'Shop NElva', 0, 'Slonim');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('grodno region')),
-    'interm.by', 'Интернет магазин interm.by', 0, 'Dyatlovo');
+    'interm.by', 'Internet-shop interm.by', 0, 'Dyatlovo');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('grodno region')),
-    'Аделэйс', 'Магазин Аделэйс', 0, 'Grodno');
+    'Adelace', 'Shop Adelace', 0, 'Grodno');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('grodno region')),
-    'bitrade.by', 'Интернет-магазин Bittrade.by', 1, 'Grodno');
+    'bitrade.by', 'Internet-shop Bittrade.by', 1, 'Grodno');
     ---------------------
     
     --vitebsk region clients
     
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('vitebsk region')),
-    'Amaia', 'Магазин Amaia', 0, 'Vitebsk');
+    'Amaia', 'Shop Amaia', 0, 'Vitebsk');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('vitebsk region')),
-    'Reina', 'Магазин Reina', 0, 'Polotsk');
+    'Reina', 'Shop Reina', 0, 'Polotsk');
     ---------------------
     
     --brest region clients
     
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('brest region')),
-    'polisan.by', 'Магазин Polisan.by', 0, 'Pinsk');
+    'polisan.by', 'Shop Polisan.by', 0, 'Pinsk');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('brest region')),
-    'xobbi.by', 'Магазин xobbi.by', 0, 'Brest');
+    'xobbi.by', 'Shop xobbi.by', 0, 'Brest');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('brest region')),
-    'bixenon.by', 'Магазин bixenon.by', 0, 'Kobrin');
+    'bixenon.by', 'Shop bixenon.by', 0, 'Kobrin');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('brest region')),
-    'v-breste.by', 'Магазин v-breste.by', 0, 'Brest');
+    'v-breste.by', 'Shop v-breste.by', 0, 'Brest');
     ---------------------
     
     --gomel region clients
     
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('gomel region')),
-    'ShopGomel.by', 'Интернет магазин ShopGomel', 0, 'Gomel');
+    'ShopGomel.by', 'Internet-shop ShopGomel', 0, 'Gomel');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('gomel region')),
-    'Зеон Плюс', 'ООО "Зеон Плюс"', 0, 'Rogachev');
+    'Zeon Plus', 'OOO "Zeon Plus"', 0, 'Rogachev');
     ---------------------
     
     --mogilev region clients
     
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('mogilev region')),
-    'Балекс', 'Магазин одежды Балекс', 0, 'Mogilev');
+    'Balex', 'Clothes shop Balex', 0, 'Mogilev');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('mogilev region')),
-    'Мюон Минус', 'ОАО "Мюон Минус"', 0, 'Shklov');
+    'Mewon Minus', 'OAO "Mewon Minus"', 0, 'Shklov');
     ---------------------
     
     --minsk region clients
     
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('minsk region')),
-    'Lamoda', 'Интернет-магазин Lamoda.by', 1, 'Minsk');
+    'Lamoda', 'Internet-shop Lamoda.by', 1, 'Minsk');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('minsk region')),
-    'MarkFormelle', 'Магазин Mark formelle', 1, 'Minsk');
+    'MarkFormelle', 'Shop Mark formelle', 1, 'Minsk');
 
 /* node data */
 ---------------------

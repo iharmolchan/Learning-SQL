@@ -1,2 +1,3 @@
-sqlplus shop/shop@orclpdb @e:\work\Learning-SQL\PlSQL\creation\all.sql
+chcp 1251
+sqlplus shop/shop@orclpdb @all.sql
 
