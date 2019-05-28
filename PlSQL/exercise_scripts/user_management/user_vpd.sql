@@ -77,9 +77,6 @@ AS
    END deptid_sec;   
 END shop_security;
 
--- adding shop security to all users
-GRANT EXECUTE ON shop_security TO public; -- but working without it
-
 ------------------------------------------------------------------------------------------------------------
 -- adding policy (under system user)
 BEGIN
@@ -98,4 +95,16 @@ BEGIN
       update_check => TRUE);
 END;
 
+
+-- add column security policy
+BEGIN
+   dbms_rls.add_policy(
+      object_schema => 'shop',
+      object_name => 't_sale',
+      policy_name => 'manager_policy',
+      function_schema => 'shop',
+      policy_function => 'shop_security.deptid_sec',
+      statement_types => 'select',
+      sec_relevant_cols => 'summa, nds'); -- just add columns nedded to be controled by policy
+END;
 
