@@ -96,11 +96,11 @@
     
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('grodno region')),
-    'MySport', 'Сеть магазинов MySport', 1, 'Grodno');
+    'MySport', 'Shops MySport', 1, 'Grodno');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('grodno region')),
-    'NELVA', 'Shop NElva', 0, 'Slonim');
+    'NELVA', 'Shop Nelva', 0, 'Slonim');
     ---------------------
     INSERT INTO t_client (id_dept, moniker, name, is_vip, town)
     VALUES ((SELECT id_dept FROM t_dept WHERE UPPER(name)=UPPER('grodno region')),
