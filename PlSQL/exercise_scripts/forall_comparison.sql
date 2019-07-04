@@ -15,18 +15,7 @@ BEGIN
    --loop inserting
    FOR i IN 0 .. v_sale_array.count - 1
    LOOP
-      INSERT INTO 
-         t_sale_str_test (id_sale_str, id_sale, id_ware, qty, price, discount, disc_price, summa, nds)
-      VALUES(
-         v_sale_array(i).id_sale_str, 
-         v_sale_array(i).id_sale, 
-         v_sale_array(i).id_ware, 
-         v_sale_array(i).qty, 
-         v_sale_array(i).price, 
-         v_sale_array(i).discount, 
-         v_sale_array(i).disc_price, 
-         v_sale_array(i).summa, 
-         v_sale_array(i).nds);
+      INSERT INTO t_sale_str_test VALUES v_sale_array(i);
    END LOOP;
    
    end_time := SYSTIMESTAMP;
@@ -36,18 +25,7 @@ BEGIN
    
    --forall bulk inserting
    FORALL i IN 0 .. v_sale_array.count-1
-   INSERT INTO 
-      t_sale_str_test (id_sale_str, id_sale, id_ware, qty, price, discount, disc_price, summa, nds)
-   VALUES(
-      v_sale_array(i).id_sale_str, 
-      v_sale_array(i).id_sale, 
-      v_sale_array(i).id_ware, 
-      v_sale_array(i).qty, 
-      v_sale_array(i).price, 
-      v_sale_array(i).discount, 
-      v_sale_array(i).disc_price, 
-      v_sale_array(i).summa, 
-      v_sale_array(i).nds);
+      INSERT INTO t_sale_str_test VALUES v_sale_array(i);
              
    end_time := SYSTIMESTAMP;
    DBMS_OUTPUT.PUT_LINE('FORALL bulk inserting ended insert with time: '||(end_time - start_time));           
